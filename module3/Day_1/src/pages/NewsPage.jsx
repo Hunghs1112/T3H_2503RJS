@@ -1,20 +1,27 @@
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useTheme } from "../context/WrapperTheme.jsx";
 
 const NewsPage = () => {
   const navigate = useNavigate();
+  const { colors } = useTheme();
+
   const handleShowDetail = (id) => {
     navigate(`/news/${id}`);
   };
+
   return (
-    <div>
+    <div style={{ backgroundColor: colors.backgroundColor }}>
       <ul>
         <li>
           Đăng -{" "}
           <button
-            className="border-2 rounded p-1 hover:bg-amber-200 cursor-pointer transition-all"
-            onClick={() => {
-              handleShowDetail(1);
+            className="border rounded p-1 cursor-pointer transition-all"
+            onClick={() => handleShowDetail(1)}
+            style={{
+              borderColor: colors.border,
+              color: colors.color,
+              backgroundColor: colors.inputBg,
             }}
           >
             Xem chi tiết
@@ -24,9 +31,12 @@ const NewsPage = () => {
         <li>
           Dương -{" "}
           <button
-            className="border-2 rounded p-1 hover:bg-amber-200 cursor-pointer transition-all"
-            onClick={() => {
-              handleShowDetail(2);
+            className="border rounded p-1 cursor-pointer transition-all"
+            onClick={() => handleShowDetail(2)}
+            style={{
+              borderColor: colors.border,
+              color: colors.color,
+              backgroundColor: colors.inputBg,
             }}
           >
             Xem chi tiết
